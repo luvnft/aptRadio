@@ -9,24 +9,36 @@ import { faHeart as outlineHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import { useAccountContext } from "../utils/context";
-import Jazz from '../assets/Jazz.jpeg'
-import Classical from '../assets/Classical.jpeg'
-import Hiphop from '../assets/Hip hop.jpeg'
-import Rock from '../assets/Rock.jpeg'
-import Pop from '../assets/Pop.jpeg'
-import newArrivals from '../assets/newarrivals.jpg'
-import trending from '../assets/trending.png'
+import JerseyClub from '../assets/JerseyClub.jpeg';
+import JerseyBounce from '../assets/JerseyBounce.jpeg';
+import JerseyBass from '../assets/JerseyBass.jpeg';
+import JerseyHouse from '../assets/JerseyHouse.jpeg';
+import JerseyTwerk from '../assets/JerseyTwerk.jpeg';
+import BaltimoreClub from '../assets/BaltimoreClub.jpeg';
+import PhillyClub from '../assets/PhillyClub.jpeg';
+import JerseyRemix from '../assets/JerseyRemix.jpeg';
+import JerseyVocal from '../assets/JerseyVocal.jpeg';
+import JerseyTrap from '../assets/JerseyTrap.jpeg';
+import JerseyExperimental from '../assets/JerseyExperimental.jpeg';
+import newArrivals from '../assets/newarrivals.jpg';
+import trending from '../assets/trending.png';
 
 interface FreeCardProps {
   genre: string
 }
 
 const categoryMap = new Map([
-  ['Rock', 'rock'],
-  ['Pop', 'pop'],
-  ['HipHop', 'hiphop'],
-  ['Classical', 'classical'],
-  ['Jazz', 'jazz'],
+  ['Jersey Club', 'jerseyclub'],
+  ['Jersey Club (Bounce)', 'jerseybounce'],
+  ['Jersey Club (Bass)', 'jerseybass'],
+  ['Jersey Club (House)', 'jerseyhouse'],
+  ['Jersey Club (Twerk)', 'jerseytwerk'],
+  ['Baltimore Club', 'baltimoreclub'],
+  ['Philly Club', 'phillyclub'],
+  ['Jersey Club (Remix)', 'jerseyremix'],
+  ['Jersey Club (Vocal)', 'jerseyvocal'],
+  ['Jersey Club (Trap)', 'jerseytrap'],
+  ['Jersey Club (Experimental)', 'jerseyexperimental'],
   ['Trending Now', 'trending'],
   ['New Arrivals', 'newarrivals']
 ])
@@ -39,36 +51,40 @@ const FreeCard: React.FC<FreeCardProps> = ({genre}) => {
   const handlePlay = () => {
     login ? navigate("/playsongs/"+categoryMap.get(genre)) : navigate("/signup")
   }
-  const [image, setImage] = useState(genre === 'Jazz' ? Jazz : genre === 'HipHop' ? Hiphop : genre === 'Pop' ? Pop : genre === 'Classical' ? Classical : genre === 'Rock' ? Rock : genre === 'Trending Now' ? trending : newArrivals );
+  
+  const getGenreImage = () => {
+    switch(genre) {
+      case 'Jersey Club': return JerseyClub;
+      case 'Jersey Club (Bounce)': return JerseyBounce;
+      case 'Jersey Club (Bass)': return JerseyBass;
+      case 'Jersey Club (House)': return JerseyHouse;
+      case 'Jersey Club (Twerk)': return JerseyTwerk;
+      case 'Baltimore Club': return BaltimoreClub;
+      case 'Philly Club': return PhillyClub;
+      case 'Jersey Club (Remix)': return JerseyRemix;
+      case 'Jersey Club (Vocal)': return JerseyVocal;
+      case 'Jersey Club (Trap)': return JerseyTrap;
+      case 'Jersey Club (Experimental)': return JerseyExperimental;
+      case 'Trending Now': return trending;
+      case 'New Arrivals': return newArrivals;
+      default: return JerseyClub;
+    }
+  }
+  
+  const [image, setImage] = useState(getGenreImage());
+
   return (
     <>
       {/* <!-- CARD 1 --> */}
-      <div className="bg-gray-900 shadow-lg rounded p-3">
-        <div className="group relative">
+      <div className="p-3 bg-gray-900 rounded shadow-lg">
+        <div className="relative group">
           <img
-            className="w-full md:w-72 block rounded h-64"
+            className="block w-full h-64 rounded md:w-72"
             src={image}
-            alt=""
+            alt={genre}
           />
-          <div className="absolute bg-black rounded bg-opacity-0 group-hover:bg-opacity-60 w-full h-full top-0 flex items-center group-hover:opacity-100 transition justify-evenly">
-            {/* <button className="hover:scale-110 text-white opacity-0 transform translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 transition">
-              {like ? (
-                <FontAwesomeIcon
-                  icon={faHeart}
-                  className="text-center"
-                  onClick={() => setLike(!like)}
-                  size="xl"
-                />
-              ) : (
-                <FontAwesomeIcon
-                  icon={outlineHeart}
-                  onClick={() => setLike(!like)}
-                  size="xl"
-                />
-              )}
-            </button> */}
-
-            <button onClick={handlePlay} className="hover:scale-110 text-white opacity-0 transform translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 transition">
+          <div className="absolute top-0 flex items-center w-full h-full transition bg-black bg-opacity-0 rounded group-hover:bg-opacity-60 group-hover:opacity-100 justify-evenly">
+            <button onClick={handlePlay} className="text-white transition transform translate-y-3 opacity-0 hover:scale-110 group-hover:translate-y-0 group-hover:opacity-100">
               {pause ? (
                 <FontAwesomeIcon
                   icon={faPause}
@@ -83,14 +99,10 @@ const FreeCard: React.FC<FreeCardProps> = ({genre}) => {
                 />
               )}
             </button>
-{/* 
-            <button className="hover:scale-110 text-white opacity-0 transform translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 transition">
-              <FontAwesomeIcon icon={faWallet} size="xl" />
-            </button> */}
           </div>
         </div>
         <div className="p-5">
-          <h3 className="text-white text-lg">{genre}</h3>
+          <h3 className="text-lg text-white">{genre}</h3>
         </div>
       </div>
       {/* <!-- END OF CARD 1 --> */}

@@ -157,56 +157,60 @@ const UploadForm: React.FC = () => {
     return (
         <div>
             <div className="grid md:grid-cols-2 sm:grid-cols-1">
-                <div className="md:px-10 sm:px-5 py-5 md:col-span-2">
-                    <label className="block text-left m-2">Song name:</label>
-                    <input className="block text-black text-left h-10 w-full bg-gray-100 border rounded-lg focus:bg-gray-300 p-2" type="text" placeholder="Eg: Dandelions etc." onChange={(e)=>{ setSong(e.target.value) }}></input>
+                <div className="py-5 md:px-10 sm:px-5 md:col-span-2">
+                    <label className="block m-2 text-left">Song name:</label>
+                    <input className="block w-full h-10 p-2 text-left text-black bg-gray-100 border rounded-lg focus:bg-gray-300" type="text" placeholder="Eg: Dandelions etc." onChange={(e)=>{ setSong(e.target.value) }}></input>
                 </div>
-                <div className="md:px-10 sm:px-5 py-5">
-                    <label className="block text-left m-2">Vocalist</label>
-                    <input className="block text-black text-left h-10 w-full bg-gray-100 border rounded-lg focus:bg-gray-300 p-2" type="text" placeholder="Eg: AUR etc." onChange={(e)=>{ setVocalist(e.target.value) }}></input>
+                <div className="py-5 md:px-10 sm:px-5">
+                    <label className="block m-2 text-left">Vocalist</label>
+                    <input className="block w-full h-10 p-2 text-left text-black bg-gray-100 border rounded-lg focus:bg-gray-300" type="text" placeholder="Eg: AUR etc." onChange={(e)=>{ setVocalist(e.target.value) }}></input>
                 </div>
-                <div className="md:px-10 sm:px-5 py-5">
-                    <label className="block text-left m-2">Lyricist</label>
-                    <input className="block text-black text-left h-10 w-full bg-gray-100 border rounded-lg focus:bg-gray-300 p-2" type="text" placeholder="Eg: AUR etc." onChange={(e)=>{ setlyricist(e.target.value) }}></input>
+                <div className="py-5 md:px-10 sm:px-5">
+                    <label className="block m-2 text-left">Lyricist</label>
+                    <input className="block w-full h-10 p-2 text-left text-black bg-gray-100 border rounded-lg focus:bg-gray-300" type="text" placeholder="Eg: AUR etc." onChange={(e)=>{ setlyricist(e.target.value) }}></input>
                 </div>
-                <div className="md:px-10 sm:px-5 py-5">
-                    <label className="block text-left m-2">Musician</label>
-                    <input className="block text-black text-left h-10 w-full bg-gray-100 border rounded-lg focus:bg-gray-300 p-2" type="text" placeholder="Eg: AUR etc." onChange={(e)=>{ setMusician(e.target.value) }}></input>
+                <div className="py-5 md:px-10 sm:px-5">
+                    <label className="block m-2 text-left">Musician</label>
+                    <input className="block w-full h-10 p-2 text-left text-black bg-gray-100 border rounded-lg focus:bg-gray-300" type="text" placeholder="Eg: AUR etc." onChange={(e)=>{ setMusician(e.target.value) }}></input>
                 </div>
-                <div className="md:px-10 sm:px-5 py-5">
-                    <label className="block text-left m-2">Audio_Engineer</label>
-                    <input className="block text-black text-left h-10 w-full bg-gray-100 border rounded-lg focus:bg-gray-300 p-2" type="text" placeholder="Eg: AUR etc." onChange={(e)=>{ setAudio(e.target.value) }}></input>
+                <div className="py-5 md:px-10 sm:px-5">
+                    <label className="block m-2 text-left">Audio_Engineer</label>
+                    <input className="block w-full h-10 p-2 text-left text-black bg-gray-100 border rounded-lg focus:bg-gray-300" type="text" placeholder="Eg: AUR etc." onChange={(e)=>{ setAudio(e.target.value) }}></input>
                 </div>
             </div>
             <div className="grid md:grid-cols-2 sm:grid-cols-1">
-                <div className="md:px-10 sm:px-5 py-5">
-                    <label className="block text-left m-2">Genre of the Song:</label>
+                <div className="py-5 md:px-10 sm:px-5">
+                    <label className="block m-2 text-left">Genre of the Song:</label>
                     <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onChange={(e)=>{ setGenre(e.target.value) }}>
                         <option selected>Select the Genre</option>
-                        <option value="Rock">Rock</option>
-                        <option value="Pop">Pop</option>
-                        <option value="HipHop">HipHop</option>
-                        <option value="Classical">Classical</option>
-                        <option value="Jazz">Jazz</option>
+                        <option value="Jersey Club">Jersey Club</option>
+                        <option value="Jersey Club (Bounce)">Jersey Club (Bounce)</option>
+                        <option value="Jersey Club (Bass)">Jersey Club (Bass)</option>
+                        <option value="Jersey Club (House)">Jersey Club (House)</option>
+                        <option value="Jersey Club (Twerk)">Jersey Club (Twerk)</option>
+                        <option value="Baltimore Club">Baltimore Club</option>
+                        <option value="Philly Club">Philly Club</option>
+                        <option value="Jersey Club (Remix)">Jersey Club (Remix)</option>
+                        <option value="Jersey Club (Vocal)">Jersey Club (Vocal)</option>
+                        <option value="Jersey Club (Trap)">Jersey Club (Trap)</option>
+                        <option value="Jersey Club (Experimental)">Jersey Club (Experimental)</option>
                     </select>
                 </div>
-                <div className="md:px-10 sm:px-5 py-5">
-                <label className="block text-left m-2">Want the song to be premium</label>
+                <div className="py-5 md:px-10 sm:px-5">
+                <label className="block m-2 text-left">Want the song to be premium</label>
                     <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
                     onChange={(e) => { setPre(e.target.value === "1") }} >
                         <option selected disabled>Select the option</option>
                         <option value="1">Yes</option>
                         <option value="0">No</option>
                     </select>
-                    {/* <label className="block text-left m-2">Do you want this to be a Paid Content?</label>
-                    <input className="block text-black text-left h-10 w-full bg-gray-100 border rounded-lg focus:bg-gray-300 p-2" type="text" placeholder="If yes, enter the amount."></input> */}
                 </div>
             </div>
-            <div className="grid grid-cols-2 gap-10 md:gap-20 md:px-10 sm:px-5 py-5">
+            <div className="grid grid-cols-2 gap-10 py-5 md:gap-20 md:px-10 sm:px-5">
                 <ImageUpload onFileChange={handleFileChange}/>
                 <AudioUpload onFileChange={handleFileChange}/>
                 <button
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded col-span-2 m-auto"
+                    className="col-span-2 px-4 py-2 m-auto font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
                     onClick={handleSubmit} 
                    disabled = {ipfsaudio === "" || ipfsimage === "" }
                 >

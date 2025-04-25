@@ -26,12 +26,21 @@ const PlayRadio: React.FC<PlayRadioProps> = ({premium}) => {
   const provider = new Provider(Network.TESTNET);
   const moduleAddress = process.env.REACT_APP_MODULE_ADDR_TEST as string;
   const isUserPremium = useAccountContext()?.premium || false;
+  
   const genreMap = new Map<string, string>([
-    ["rock", "Rock"],
-    ["pop", "Pop"],
-    ["hiphop", "HipHop"],
-    ["classical", "Classical"],
-    ["jazz", "Jazz"]
+    ["jerseyclub", "Jersey Club"],
+    ["jerseybounce", "Jersey Club (Bounce)"],
+    ["jerseybass", "Jersey Club (Bass)"],
+    ["jerseyhouse", "Jersey Club (House)"],
+    ["jerseytwerk", "Jersey Club (Twerk)"],
+    ["baltimoreclub", "Baltimore Club"],
+    ["phillyclub", "Philly Club"],
+    ["jerseyremix", "Jersey Club (Remix)"],
+    ["jerseyvocal", "Jersey Club (Vocal)"],
+    ["jerseytrap", "Jersey Club (Trap)"],
+    ["jerseyexperimental", "Jersey Club (Experimental)"],
+    ["trending", "Trending Now"],
+    ["newarrivals", "New Arrivals"]
   ]);
 
   const [authorized, setAuthorized] = useState(true);
@@ -39,13 +48,13 @@ const PlayRadio: React.FC<PlayRadioProps> = ({premium}) => {
     song_store_ID: 0,
     artist_store_ID: 0,
     artist_wallet_address: "",
-    title: "The Fat Rat",
+    title: "Jersey Club Beat",
     ipfs_hash: "",
     ipfs_hash_cover_img: "",
     total_tips: 0,
     premium: false,
     genre: "",
-    vocalist: "Laura Brehm",
+    vocalist: "DJ Twerk",
     lyricist: "",
     musician: "",
     audio_engineer: "",
@@ -68,28 +77,20 @@ const PlayRadio: React.FC<PlayRadioProps> = ({premium}) => {
 
   useEffect(() => {
     const setSong = async () => {
-      // let gatewayToken = process.env.REACT_APP_PINATA_GATEWAY_TOKEN;
-      // const url = `https://red-personal-python-426.mypinata.cloud/ipfs/${currentSong.ipfs_hash}?pinataGatewayToken=${gatewayToken}`;
       if(currentSong.artist_wallet_address === "") return;
-      // console.log(currentSong);
       const url = `https://ipfs.io/ipfs/${currentSong.ipfs_hash}`
       console.log(url);
-      // setAudioUrl(url);
       if (audioPlayerRef.current) audioPlayerRef.current.src = url;
-  };
+    };
     setSong();
   }, [currentSong]);
 
   useEffect(() => {
     if (audioPlayerRef.current) {
-
-      // console.log(audioPlayerRef.current);
-      // Event listener for when the browser estimates it can play through the entire media
       audioPlayerRef.current.addEventListener('loadedmetadata', () => {
         const totalSeconds = audioPlayerRef.current?.duration || 0;
         const minutes = Math.floor(totalSeconds / 60);
         const seconds = Math.floor(totalSeconds % 60);
-        // console.log(`Audio duration: ${minutes}:${seconds.toString().padStart(2, '0')}`);
         setDuration(`${minutes}:${seconds.toString().padStart(2, '0')}`);
       });
 
@@ -103,40 +104,24 @@ const PlayRadio: React.FC<PlayRadioProps> = ({premium}) => {
           setPlaybackProgress(progressPercentage);
           setPlaybackTime(`${minutes}:${seconds.toString().padStart(2, '0')}`);
           setSongEnded(currentTime === duration);
-          // console.log("yo!!");
         }
       };
   
       audioPlayerRef.current.addEventListener('timeupdate', updateSlider);
 
-      // audioPlayerRef.current.addEventListener('ended', () => {
-      //   console.log("Song ended");
-      //   if(songEnded){
-      //     console.log("Fetching new song");
-      //     setSongEnded(false);
-      //     // setSongIndex(-1);
-      //     fetchSong();
-      // }
-      // });
-
       audioPlayerRef.current.addEventListener('canplaythrough', () => {
-        // console.log("Can play through");
         audioPlayerRef.current?.play().catch((e) => console.log(e));
-        // setSongEnded(true);
       });
-
 
       return () => {
         if(audioPlayerRef.current){
           audioPlayerRef.current.removeEventListener('loadedmetadata', () => {});
           audioPlayerRef.current.removeEventListener('timeupdate', updateSlider);
-          // audioPlayerRef.current.removeEventListener('ended', () => {});
           audioPlayerRef.current.removeEventListener('canplaythrough', () => {})
         };
       }
-
-  };
-}, [audioPlayerRef]);
+    };
+  }, [audioPlayerRef]);
 
   const fetchSongHandle = async () => {
     if(genre === undefined) return;
@@ -170,15 +155,12 @@ const PlayRadio: React.FC<PlayRadioProps> = ({premium}) => {
       else {
         songLib = (songStore as any).data.premium_songs;
       }
-      // console.log(songLib);
       let genreHandle = songLib.songs.handle;
       let genreItem = {
         key_type: "0x1::string::String",
         value_type: `${moduleAddress}::songStore::Genre`,
         key: genreMap.get(genre),
       }
-      // console.log("genreTableHandle",genreHandle);
-      // console.log(genreItem);
       try{
         let songTable = await provider.getTableItem(genreHandle, genreItem);
         if((songTable as any).num_songs == 0){ alert("We currently don't have any songs of this category");}
@@ -204,8 +186,6 @@ const PlayRadio: React.FC<PlayRadioProps> = ({premium}) => {
         setSongTableHandle((songStore as any).data.trending_songs.songs.handle);
       }
     }
-    // console.log(num_songs);
-    // console.log(songTableHandle);
   }
 
   const fetchSong = async () => {
@@ -214,22 +194,14 @@ const PlayRadio: React.FC<PlayRadioProps> = ({premium}) => {
     let sidx;
     if(songIndex === -1){  setSongIndex(seed % num_songs); sidx = seed % num_songs; }
     else {setSongIndex((songIndex + 1) % num_songs); sidx = (songIndex + 1) % num_songs;}
-    // if(songIndex === -1){  setSongIndex(1); sidx = 4; }
-    // else {setSongIndex((songIndex + 1) % 2); sidx = (songIndex + 1) % 2 + 3;}
 
-    // sidx = (seed % 2) + 3;
-    // console.log(seed);
     console.log(sidx);
-    // console.log(num_songs);
-    // console.log(key_type);
-    // console.log(songTableHandle);
 
     try{
     let songData = await provider.getTableItem(songTableHandle, {
       key_type: key_type,
       value_type: `${moduleAddress}::songStore::Song`,
-      key: key_type === "u8" ? sidx : `${sidx}`  // Uncomment later
-      // key: 0
+      key: key_type === "u8" ? sidx : `${sidx}`
       });
       setCurrentSong((songData as any));
       if(songData.premium && !isUserPremium) setAuthorized(false);
@@ -253,48 +225,26 @@ const PlayRadio: React.FC<PlayRadioProps> = ({premium}) => {
       {report && <ReportModal report={report} setReport={setReport} song={currentSong} />}
       {!authorized && <SubscribeModal onClose={() => setSub(false)}/>}
       <div className="bg-[#7CA4AE] font-sans grid place-items-center py-12">
-        <div className="bg-gray-800 md:grid md:grid-cols-2 rounded-md overflow-hidden mx-2 ">
-
-
-          {/* --------------------------------cover image------------------------------- */}
+        <div className="mx-2 overflow-hidden bg-gray-800 rounded-md md:grid md:grid-cols-2 ">
+          {/* Cover image */}
           <div>
             <img
               src={currentSong.ipfs_hash_cover_img==="" ? ladyMusic : `https://ipfs.io/ipfs/${currentSong.ipfs_hash_cover_img}`}
               alt="Cover"
-              className="w-full h-full object-cover"
+              className="object-cover w-full h-full"
             />
           </div>
 
-
-          {/* -------------------------------------details---------------------------------- */}
-          <div className="text-center bg-black text-gray-200">
+          {/* Details */}
+          <div className="text-center text-gray-200 bg-black">
             <div className="px-10 py-12">
-              {/* ----title-------- */}
-              <h2 className="text-2xl font-bold mt-3" >{currentSong.title}</h2>
+              <h2 className="mt-3 text-2xl font-bold" >{currentSong.title}</h2>
               
               <a href="" onClick={(e) => {e.preventDefault(); navigate('/profile/'+currentSong.artist_wallet_address)}} className="text-3x font-bold text-[#7CA4AE]">
                 {`by ${currentSong.vocalist}`}
               </a>
 
-              {/* -----------------controls---------------- */}
               <div className=" py-4 md:py-12 flex items-center justify-around text-[#7CA4AE] px-5">
-                {/* ---------previous button------------- */}
-                {/* <button className="control-button">
-                  <svg className="w-5 h-5" viewBox="0 0 24 24">
-                    <g fill="none">
-                      <path
-                        d="M2.75 20a1 1 0 1 0 2 0V4a1 1 0 1 0-2 0v16z"
-                        fill="currentColor"
-                      ></path>
-                      <path
-                        d="M20.75 19.053c0 1.424-1.612 2.252-2.77 1.422L7.51 12.968a1.75 1.75 0 0 1 .075-2.895l10.47-6.716c1.165-.748 2.695.089 2.695 1.473v14.223z"
-                        fill="currentColor"
-                      ></path>
-                    </g>
-                  </svg>
-                </button> */}
-
-                {/* ---------Play/pause button--------- */}
                 <button className="control-button">
                   <svg className="w-9 h-9" viewBox="0 0 36 36">
                     <rect
@@ -319,45 +269,19 @@ const PlayRadio: React.FC<PlayRadioProps> = ({premium}) => {
                     ></rect>
                   </svg>
                 </button>
-
-                {/* ---------next button--------- */}
-                {/* {/* <button className="control-button">
-                  <svg className="w-5 h-5" viewBox="0 0 24 24">
-                    <g fill="none">
-                      <path
-                        d="M21 4a1 1 0 1 0-2 0v16a1 1 0 1 0 2 0V4z"
-                        fill="currentColor"
-                      ></path>
-                      <path
-                        d="M3 4.947c0-1.424 1.612-2.252 2.77-1.422l10.47 7.507a1.75 1.75 0 0 1-.075 2.895l-10.47 6.716C4.53 21.39 3 20.554 3 19.17V4.947z"
-                        fill="currentColor"
-                      ></path>
-                    </g>
-                  </svg>
-                </button> */}
               </div> 
 
-              {/* -------------silder music duration------------ */}
-
-              {/* <audio ref={audioPlayerRef} controls autoPlay>
-              <source src={audioUrl} type="audio/mp3" />Your browser does not support the audio element.
-              </audio>  */}
-              
-
               <audio ref={audioPlayerRef} 
-              autoPlay 
-              // controls
-              muted = {!authorized}
-              // style={{ display: 'none' }}
+                autoPlay 
+                muted = {!authorized}
               >
-              <source src="" type="audio/mp3" />
-              {/*<source src="https://ipfs.io/ipfs/bafybeifc2tqqiltfieu7jwesvc4rq4xbzxxlgv5u7akqwbawdz5kyksatm" type="audio/mp3" /> */}
-              Your browser does not support the audio element.
+                <source src="" type="audio/mp3" />
+                Your browser does not support the audio element.
               </audio>
 
               <div className="flex items-center gap-5 my-4 md:mb-8">
                 <div className="text-sm opacity-80">{playbakTime}</div>
-                <div className="relative bg-gray-800 w-full h-2 rounded">
+                <div className="relative w-full h-2 bg-gray-800 rounded">
                   <div id="progress-slider" className="absolute top-0 left-0"></div>
                   <input type="range" className="slider" 
                   value={playbackProgress} 
@@ -367,8 +291,6 @@ const PlayRadio: React.FC<PlayRadioProps> = ({premium}) => {
                 <div className="text-sm opacity-80">{duration}</div>
               </div>
 
-
-              {/* -------------------------------sub and Tip buttons------------------------------ */}
               <div className="pt-8 md:py-12 flex items-center justify-around text-[#7CA4AE] px-5">
                 <button>
                 <FontAwesomeIcon
@@ -393,7 +315,7 @@ const PlayRadio: React.FC<PlayRadioProps> = ({premium}) => {
           </div>
         </div>
       </div>
-    // </div>
+    </div>
   );
 };
 
