@@ -38,7 +38,7 @@ const Songs: React.FC<SongsProps> = ({ }) => {
       <main className="grid place-items-center bg-gradient-to-b from-gray-950 to-[#56757d] p-5">
         <div>
           <h1 className="mb-5 text-4xl font-bold text-gray-200 sm:text-5xl md:text-6xl">
-            Top Charts 
+          🔥 Fiya
           </h1>
           <section className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-5">
             <FreeCard genre="Trending Now" />
@@ -54,7 +54,7 @@ const Songs: React.FC<SongsProps> = ({ }) => {
         <main className="grid place-items-center bg-[#56757d] p-5">
           <div>
             <h1 className="mb-5 text-4xl font-bold text-gray-200 sm:text-5xl md:text-6xl">
-              Free Stations
+             🆓 Stations
             </h1>
             <section className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-5">
               <FreeCard genre="Jersey Club (Bounce)" />
@@ -72,7 +72,7 @@ const Songs: React.FC<SongsProps> = ({ }) => {
           <main className="grid place-items-center bg-gradient-to-b from-[#56757d] to-[#56757d] p-5">
             <div>
               <h1 className="mb-5 text-4xl font-bold text-gray-200 sm:text-5xl md:text-6xl">
-                Free Stations
+                 🆓 Stations
               </h1>
               <section className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-5">
                 <FreeCard genre="Jersey Club (Vocal)" />
@@ -88,7 +88,7 @@ const Songs: React.FC<SongsProps> = ({ }) => {
           <main className="grid place-items-center bg-gradient-to-t from-gray-950 to-[#56757d] p-5">
             <div>
               <h1 className="mb-5 text-4xl font-bold text-gray-200 sm:text-5xl md:text-6xl">
-                Premium Stations
+                 🪙 Premium Stations
               </h1>
               <section className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-5">
                 <PremiumCard genre="Jersey Club" />
