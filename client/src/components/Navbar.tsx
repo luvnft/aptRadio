@@ -36,7 +36,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
   return (
     <div>
       <nav className="w-full bg-gray-950">
-        <div className="justify-between pr-4 mx-auto  lg:items-center lg:flex">
+        <div className="justify-between pr-4 mx-auto lg:items-center lg:flex">
           <div>
             <div className="flex items-center justify-between lg:block">
               {/* LOGO */}
@@ -44,10 +44,10 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
                 <img
                   src={logo}
                   alt="logo"
-                  className="cursor-pointer text-xl w-20 py-2 px-2"
+                  className="w-20 px-2 py-2 text-xl cursor-pointer"
                 />
-                <h1 className="text-3xl flex items-center bg-gradient-to-r from-red-500 via-yellow-400 to-blue-500 bg-clip-text text-transparent">
-                  PeerPlay
+                <h1 className="flex items-center text-3xl text-transparent bg-gradient-to-r from-red-500 via-yellow-400 to-blue-500 bg-clip-text">
+                JERSEY.FM
                 </h1>
               </a>
               {/* HAMBURGER BUTTON FOR MOBILE */}
@@ -96,11 +96,11 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
               className={`flex-1 justify-self-center pb-3 mt-8 lg:block lg:pb-0 lg:mt-0 ${navbar ? "p-4 lg:p-0 block" : "hidden"
                 }`}
             >
-              <ul className="h-screen lg:h-auto items-center justify-center lg:flex ">
+              <ul className="items-center justify-center h-screen lg:h-auto lg:flex ">
                 <li className="my-4">
                   <a
                     href="/"
-                    className="text-xl text-white py-2 px-6 text-center lg:hover:bg-slate-600 rounded-md"
+                    className="px-6 py-2 text-xl text-center text-white rounded-md lg:hover:bg-slate-600"
                     onClick={(e) => { e.preventDefault(); navigate("/")}}
                   >
                     Home
@@ -111,7 +111,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
                   <HashLink
                     smooth
                     to="/#exploresongs"
-                    className="text-xl text-white py-2 px-6 text-center lg:hover:bg-slate-600 rounded-md"
+                    className="px-6 py-2 text-xl text-center text-white rounded-md lg:hover:bg-slate-600"
                     onClick={() => setNavbar(!navbar)}
                   >
                     Explore
@@ -124,7 +124,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
                   <li className="my-4">
                     <a
                       href=""
-                      className="text-xl text-white py-2 px-6 text-center lg:hover:bg-slate-600 rounded-md"
+                      className="px-6 py-2 text-xl text-center text-white rounded-md lg:hover:bg-slate-600"
                       onClick={(e)=>{e.preventDefault(); navigate("/community")}}
                     >
                       Community
@@ -136,7 +136,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
                   <li className="my-4">
                     <a
                       href=""
-                      className="text-xl text-white py-2 px-6 text-center lg:hover:bg-slate-600 rounded-md"
+                      className="px-6 py-2 text-xl text-center text-white rounded-md lg:hover:bg-slate-600"
                       onClick={(e)=>{e.preventDefault(); navigate("/dashboard")}}
                     >
                       Dashboard
@@ -148,7 +148,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
                   <li className="my-4">
                     <a
                       href=""
-                      className="text-xl text-white py-2 px-6 text-center lg:hover:bg-slate-600 rounded-md"
+                      className="px-6 py-2 text-xl text-center text-white rounded-md lg:hover:bg-slate-600"
                       onClick={(e)=>{e.preventDefault(); navigate("/uploadsongs")}}
                     >
                       Upload
@@ -160,7 +160,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
                   <li className="my-4">
                     <a
                       href=""
-                      className="text-xl text-white py-2 px-6 text-center lg:hover:bg-slate-600 rounded-md"
+                      className="px-6 py-2 text-xl text-center text-white rounded-md lg:hover:bg-slate-600"
                       onClick={(e)=>{e.preventDefault(); navigate("/myprofile")}}
                     >
                       Profile
@@ -170,7 +170,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
 
                 {
                   login && <button
-                    className="text-xl text-white py-2 px-6 mx-1 text-center bg-indigo-500 rounded-md"
+                    className="px-6 py-2 mx-1 text-xl text-center text-white bg-indigo-500 rounded-md"
                     onClick={(e) => { e.preventDefault(); onLogout() }}
                   >
                     Logout
@@ -179,7 +179,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
                 {
                   !login && location.pathname == "/signup" &&
                   <li className="my-4">
-                    <Link to="/learn-more" className="text-xl text-white py-2 px-6 text-center lg:hover:bg-slate-600 rounded-md">
+                    <Link to="/learn-more" className="px-6 py-2 text-xl text-center text-white rounded-md lg:hover:bg-slate-600">
                       Learn More
                     </Link>
                     
@@ -189,7 +189,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
                   !login && location.pathname !== "/signup" &&
                   <li className="my-4">
                     <button
-                      className="text-xl text-white py-2 px-6 mx-1 text-center bg-indigo-500 rounded-md"
+                      className="px-6 py-2 mx-1 text-xl text-center text-white bg-indigo-500 rounded-md"
                       onClick={(e)=>{e.preventDefault(); navigate("/signup")}}
                     >
                       Get Started

@@ -62,9 +62,9 @@ const Auth: React.FC<AuthProps> = ({ onLoginSuccess }: AuthProps) => {
 
   return (
     <div className="bg-gradient-to-b bg-[#7CA4AE]">
-      <section className="gradient-form w-full flex justify-center items-center">
-        <div className="container h-full w-4/5 md:py-16">
-          <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-200">
+      <section className="flex items-center justify-center w-full gradient-form">
+        <div className="container w-4/5 h-full md:py-16">
+          <div className="flex flex-wrap items-center justify-center h-full g-6 text-neutral-200">
             <div className="w-full">
               <div className="block bg-gray-900">
                 <div className="g-0 lg:flex lg:flex-wrap">
@@ -73,9 +73,9 @@ const Auth: React.FC<AuthProps> = ({ onLoginSuccess }: AuthProps) => {
                     <div className="md:mx-6 md:p-12">
                       {/* <!--Logo--> */}
                       <div className="text-center">
-                        <img className="mx-auto w-48" src={Logo} alt="logo" />
-                        <h4 className="mb-12 mt-1 pb-1 text-xl font-semibold">
-                          PeerPlay
+                        <img className="w-48 mx-auto" src={Logo} alt="logo" />
+                        <h4 className="pb-1 mt-1 mb-12 text-xl font-semibold">
+                           JERSEY.FM
                         </h4>
                       </div>
                       <form onSubmit={handleAccountCreation}>
@@ -123,7 +123,7 @@ const Auth: React.FC<AuthProps> = ({ onLoginSuccess }: AuthProps) => {
                         </div> */}
 
                         {/* <!--Submit button--> */}
-                        <div className="mb-12 pb-1 pt-1 text-center">
+                        <div className="pt-1 pb-1 mb-12 text-center">
                           <button
                             className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white bg-blue-500"
                             type="submit"
@@ -140,7 +140,7 @@ const Auth: React.FC<AuthProps> = ({ onLoginSuccess }: AuthProps) => {
 
                   {/* <!-- Right column container with background and description--> */}
                   <div
-                    className="flex items-center lg:w-6/12 bg-gray-800"
+                    className="flex items-center bg-gray-800 lg:w-6/12"
                   >
                     <div className="px-4 py-6 text-white md:mx-6 md:p-12">
                       <h4 className="mb-6 text-xl font-semibold">
@@ -153,7 +153,7 @@ const Auth: React.FC<AuthProps> = ({ onLoginSuccess }: AuthProps) => {
                         nostrud exercitation ullamco laboris nisi ut aliquip ex
                         ea commodo consequat.
                       </p> */}
-                      <div className="pt-8 flex justify-center items-center">
+                      <div className="flex items-center justify-center pt-8">
                         <Avatar />
                       </div>
                     </div>

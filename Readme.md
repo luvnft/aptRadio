@@ -211,9 +211,9 @@ In the project directory, ``` client ``` contains the frontend of the applicatio
 - **Usage:** Serves as the main entry point for user interaction and song exploration.
 
 ### LearnMore Page
-- **Description:** Presents detailed information about PeerPlay's features, statistics, and popular artists.
+- **Description:** Presents detailed information about JERSEY.FM's features, statistics, and popular artists.
 - **Dependencies:** React
-- **Usage:** Provides users with additional insights about PeerPlay's key aspects.
+- **Usage:** Provides users with additional insights about JERSEY.FM's key aspects.
 
 ### PlayRadio Page
 - **Description:** Represents a music player with functionalities like play/pause, song selection, duration display, and modal integration.
