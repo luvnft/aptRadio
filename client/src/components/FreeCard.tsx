@@ -19,7 +19,7 @@ import PhillyClub from '../assets/PhillyClub.png';
 import JerseyRemix from '../assets/JerseyRemix.png';
 import JerseyVocal from '../assets/JerseyVocal.png';
 import JerseyTrap from '../assets/JerseyTrap.png';
-import JerseyExperimental from '../assets/JerseyExperimental.jpeg';
+import JerseyExperimental from '../assets/JerseyExperimental.png';
 import newArrivals from '../assets/newarrivals.png';
 import trending from '../assets/trending.png';
 
