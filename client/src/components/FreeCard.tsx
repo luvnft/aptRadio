@@ -10,17 +10,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import { useAccountContext } from "../utils/context";
 import JerseyClub from '../assets/JerseyClub.jpeg';
-import JerseyBounce from '../assets/JerseyBounce.jpeg';
+import JerseyBounce from '../assets/JerseyBounce.png';
 import JerseyBass from '../assets/JerseyBass.jpeg';
 import JerseyHouse from '../assets/JerseyHouse.jpeg';
-import JerseyTwerk from '../assets/JerseyTwerk.jpeg';
-import BaltimoreClub from '../assets/BaltimoreClub.jpeg';
-import PhillyClub from '../assets/PhillyClub.jpeg';
-import JerseyRemix from '../assets/JerseyRemix.jpeg';
-import JerseyVocal from '../assets/JerseyVocal.jpeg';
-import JerseyTrap from '../assets/JerseyTrap.jpeg';
+import JerseyTwerk from '../assets/JerseyTwerk.png';
+import BaltimoreClub from '../assets/BaltimoreClub.png';
+import PhillyClub from '../assets/PhillyClub.png';
+import JerseyRemix from '../assets/JerseyRemix.png';
+import JerseyVocal from '../assets/JerseyVocal.png';
+import JerseyTrap from '../assets/JerseyTrap.png';
 import JerseyExperimental from '../assets/JerseyExperimental.jpeg';
-import newArrivals from '../assets/newarrivals.jpg';
+import newArrivals from '../assets/newarrivals.png';
 import trending from '../assets/trending.png';
 
 interface FreeCardProps {
