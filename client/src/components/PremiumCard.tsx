@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { useAccountContext } from "../utils/context";
 import JerseyClub from '../assets/JerseyClub.png';
 import JerseyBounce from '../assets/JerseyBounce.png';
-import JerseyBass from '../assets/JerseyBass.jpeg';
+import JerseyBass from '../assets/JerseyClub.png';
 import JerseyHouse from '../assets/JerseyHouse.jpeg';
 import JerseyTwerk from '../assets/JerseyTwerk.png';
 import BaltimoreClub from '../assets/BaltimoreClub.png';
