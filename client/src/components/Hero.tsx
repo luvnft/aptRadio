@@ -40,26 +40,25 @@ const Hero: React.FC<HeroProps> = ({onLoginSuccess}) => {
   return (
     <div>
       <section className="text-gray-200 body-font bg-gray-950">
-        <div className="container mx-auto flex px-5 md:py-24 md:flex-row flex-col-reverse items-center">
-          <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-            <h1 className="title-font sm:text-4xl text-3xl mb-4 bg-gradient-to-r from-red-500 via-yellow-400 to-blue-500 bg-clip-text text-transparent font-bold">
-              Decentralizing Music, Monetizing Art.&nbsp;
+        <div className="container flex flex-col-reverse items-center px-5 mx-auto md:py-24 md:flex-row">
+          <div className="flex flex-col items-center mb-16 text-center lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 md:items-start md:text-left md:mb-0">
+            <h1 className="mb-4 text-3xl font-bold text-transparent title-font sm:text-4xl bg-gradient-to-r from-red-500 via-yellow-400 to-blue-500 bg-clip-text">
+              Jersey Club Music Radio&nbsp;
               <br className="hidden lg:inline-block" />
-              Your Music, Your Blockchain, Your Rules.
             </h1>
-            <p className="mb-8 leading-relaxed hidden lg:block">
-              Immerse yourself in the future of music with our decentralized
-              on-chain radio platform. Connect your wallet for instant artist
-              monetization, experience real-time revenue sharing, and explore a
-              world where the beats are powered by blockchain innovation. Your
-              music journey begins here.
+            <p className="hidden mb-8 leading-relaxed lg:block">
+              We took the music industry back to the block(-chain) where it
+              all started when it was powered by the fans. Connect your wallet
+              for instant artist monetization, experience real-time revenue
+              sharing, and explore a world where the beats are powered by blockchain
+              innovation.
             </p>
             <div className="flex justify-center">
               {
                 !login &&
                 <button
                   type="button"
-                  className="text-xl text-white py-2 px-6 mx-1 text-center bg-indigo-500 rounded-md"
+                  className="px-6 py-2 mx-1 text-xl text-center text-white bg-indigo-500 rounded-md"
                   data-te-ripple-init
                   data-te-ripple-color="light"
                   onClick={handleConnectWallet}
@@ -70,15 +69,15 @@ const Hero: React.FC<HeroProps> = ({onLoginSuccess}) => {
               <div className="hidden">
                 <WalletSelector isModalOpen={isModalOpen} setModalOpen={setModalOpen} />
               </div>
-              <HashLink smooth to="#exploresongs" className="ml-4 inline-flex text-gray-900 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
+              <HashLink smooth to="#exploresongs" className="inline-flex px-6 py-2 ml-4 text-lg text-gray-900 bg-gray-100 border-0 rounded focus:outline-none hover:bg-gray-200">
                 Explore
               </HashLink>
-              <Link to="/learn-more" className="ml-4 inline-flex items-center text-gray-100 focus:outline-none text-lg">
+              <Link to="/learn-more" className="inline-flex items-center ml-4 text-lg text-gray-100 focus:outline-none">
                 Learn More &#8594;
               </Link>
             </div>
           </div>
-          <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+          <div className="w-5/6 lg:max-w-lg lg:w-full md:w-1/2">
             <img
               className="object-cover object-center rounded"
               alt="hero"
