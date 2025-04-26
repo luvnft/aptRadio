@@ -14,7 +14,7 @@ import { useAccountContext } from "../utils/context";
 import JerseyClub from '../assets/JerseyClub.png';
 import JerseyBounce from '../assets/JerseyBounce.png';
 import JerseyBass from '../assets/JerseyClub.png';
-import JerseyHouse from '../assets/JerseyHouse.jpeg';
+import JerseyHouse from '../assets/JerseyClub.png';
 import JerseyTwerk from '../assets/JerseyTwerk.png';
 import BaltimoreClub from '../assets/BaltimoreClub.png';
 import PhillyClub from '../assets/PhillyClub.png';
