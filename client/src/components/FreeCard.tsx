@@ -9,7 +9,7 @@ import { faHeart as outlineHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import { useAccountContext } from "../utils/context";
-import JerseyClub from '../assets/JerseyClub.jpeg';
+import JerseyClub from '../assets/JerseyClub.png';
 import JerseyBounce from '../assets/JerseyBounce.png';
 import JerseyBass from '../assets/JerseyBass.jpeg';
 import JerseyHouse from '../assets/JerseyHouse.jpeg';
